@@ -1,0 +1,29 @@
+{
+  "name": "minasejs",
+  "version": "1.0.0",
+  "description": "A new View of minase.tk",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-minase/minasejs.git"
+  },
+  "keywords": [
+    "javascript",
+    "osu",
+    "osu!minase"
+  ],
+  "author": "Kotypey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-minase/minasejs/issues"
+  },
+  "homepage": "https://github.com/osu-minase/minasejs#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mysql2": "^1.7.0"
+  }
+}
