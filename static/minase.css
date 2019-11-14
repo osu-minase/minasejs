@@ -1,4 +1,46 @@
-.navbar-header {
-    background-image: url('https://akatsuki.pw/static/images/icons/button.svg');
-    color: #ff00ee;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+
+.header {
+    display: -webkit-box;
+    display: flexbox;
+    display: flex;
+    margin: 1rem 0;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: #595959;
+    font-weight: 400;
+    border: 1px solid rgba(34, 36, 38, .15);
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    border-radius: .28571429rem;
+    min-height: 2.85714286em
+}
+.header .item {
+    position: relative;
+    vertical-align: middle;
+    line-height: 1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: 0 0;
+    padding: .92857143em 1.14285714em;
+    text-transform: none;
+    color: rgba(255, 255, 255, .93);
+    font-weight: 400;
+    -webkit-transition: background .1s ease, box-shadow .1s ease, color .1s ease;
+    transition: background .1s ease, box-shadow .1s ease, color .1s ease;
+}
+
+.header:not(.vertical) .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
