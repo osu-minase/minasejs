@@ -1,0 +1,16 @@
+{
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "password": "somedatabasepassword",
+        "database": "ripple"
+    },
+    "redis": {
+        "host": "localhost",
+        "password": "",
+        "database": 0
+    },
+    "webserver": {
+        "port": 8080
+    }
+}
