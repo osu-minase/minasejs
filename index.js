@@ -7,13 +7,14 @@ const redis = require('redis');
 const redis_con = new redis.createClient({host: config.redis.host, db: config.redis.db, password: config.redis.password})
 const express_app = express();
 options = {host: config.database.host,user: config.database.user, password: config.database.password, database: config.database.database};
-const database = await mysql.createPool(options);
+
 const mailer = require('nodemailer');
 global.app = express_app;
-global.db = database;
+
 global.redis = redis_con;
 (async () => {
-    
+    const database = await mysql.createPool(options);
+    global.db = database;
     app.use(bodyParser.json());
     app.set('view engine', 'ejs');// что нужн?мммм
     app.use('/static', express.static('static')); // так ты же сразу обновляешь, не?, зачем пулы на гит
