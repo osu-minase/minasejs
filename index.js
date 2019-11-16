@@ -29,7 +29,6 @@ global.redis = redis_con;
     })
     global.mailer = mailer_transporter;
 
-
     
     app.use('/', homepage_route);
     app.use(require('./routes/mailtest'));
