@@ -12,5 +12,14 @@
     },
     "webserver": {
         "port": 8080
+    },
+    "mail": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "kotypey@gmail.com",
+            "pass": "Nope :3"
+        }
     }
 }

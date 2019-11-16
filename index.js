@@ -4,20 +4,34 @@ const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser');
 const homepage_route = require('./routes/homepage');
 const redis = require('redis');
-global.redis = new redis.createClient({host: config.redis.host, db: config.redis.db, password: config.redis.password})
-global.app = express();
+const redis_con = new redis.createClient({host: config.redis.host, db: config.redis.db, password: config.redis.password})
+const express_app = express();
 options = {host: config.database.host,user: config.database.user, password: config.database.password, database: config.database.database};
+const database = await mysql.createPool(options);
+const mailer = require('nodemailer');
+global.app = express_app;
+global.db = database;
+global.redis = redis_con;
 (async () => {
-    global.db = await mysql.createPool(options);
+    
     app.use(bodyParser.json());
     app.set('view engine', 'ejs');// что нужн?мммм
-    app.use('/static', express.static('static'));
-    
-
+    app.use('/static', express.static('static')); // так ты же сразу обновляешь, не?, зачем пулы на гит
+    const mailer_transporter = mailer.createTransport({
+        host: config.mail.host,
+        port: config.mail.port,
+        secure: config.mail.secure,
+        auth: {
+            user: config.mail.auth.user,
+            pass: config.mail.auth.pass
+        }
+    })
+    global.mailer = mailer_transporter;
 
 
     
     app.use('/', homepage_route);
+    app.use(require('./routes/mailtest'));
 
 
 
