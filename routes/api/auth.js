@@ -6,18 +6,17 @@ const utils = require('../../util');
 const md5 = require('md5');
 //I go sleep, tomorrow will continiune
 route.get('/login', async (req, res) => {
-    const response = await utils.getUserLogin(999);
-    res.send(require('util').inspect(response))
+    res.render('login')
     
 })
 
 route.post('/login', async (req, res) => {
     let password = req.body.password;//freaking md5
     let login =  req.body.login;
+    console.log(require('util').inspect(req.params))
     if(!login) return res.send('Error: i need login');
     if(!password) return res.end('password please')
     let id = await utils.getUserIdByUsername(login);
-в
     if(!id){
         return res.end('Error: user not found')
     }
@@ -31,7 +30,7 @@ route.post('/login', async (req, res) => {
     if(!validation) {
         return res.send('Error: incorrect password or login')
     }
-    let reponse_data = jwt.sign({userid: id, password: password_enc})
-    res.send(response_data);
+    let reponse_data = jwt.sign({userid: id, password: password_enc}, config.webserver.jwt_secret);
+    res.send(reponse_data);
 })
 module.exports = route;

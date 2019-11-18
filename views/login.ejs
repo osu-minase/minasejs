@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<% include ./base %>
+<script>
+$('.alert').alert('hello');
+function login(){
+    try {
+    let login = document.getElementsByClassName('loginfield').value;
+    let password = document.getElementsByClassName('passwordfield');
+    var res = jQuery.ajax({
+        type: 'POST',
+        url: '/login',
+        data: JSON.stringify({login: login, password: password}),
+        success: function(data){
+            alert(data)
+        }
+    })
+    } catch (error) {
+        alert('Oh, no we got some error, we shoult fix it! report it to SmallBabyTape#9393 \n' + error)
+    }
+
+    
+}
+</script>
+<input type="text" placeholder="login" class="loginfield">
+<input type="password" placeholder="password" class="passwordfield">
+<button onclick="login()">login</button>
+
+</button>
+</body> 
+<h6>
+</h6>
+</body>
+</html>

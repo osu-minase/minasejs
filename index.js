@@ -10,12 +10,13 @@ options = {host: config.database.host,user: config.database.user, password: conf
 
 const mailer = require('nodemailer');
 global.app = express_app;
-
+global.config = config
 global.redis = redis_con;
 (async () => {
     const database = await mysql.createPool(options);
     global.db = database;
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: true}))
     app.set('view engine', 'ejs');// что нужн?мммм
     app.use('/static', express.static('static')); // так ты же сразу обновляешь, не?, зачем пулы на гит
     const mailer_transporter = mailer.createTransport({
