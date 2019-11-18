@@ -3,8 +3,8 @@ const express = require('express');
 const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser');
 const homepage_route = require('./routes/homepage');
-const redis = require('redis');
-const redis_con = new redis.createClient({host: config.redis.host, db: config.redis.db, password: config.redis.password})
+const redisl = require('redis');
+const redis_con = new redisl.createClient({host: config.redis.host, db: config.redis.db, password: config.redis.password})
 const express_app = express();
 options = {host: config.database.host,user: config.database.user, password: config.database.password, database: config.database.database};
 
