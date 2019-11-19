@@ -13,6 +13,7 @@ route.get('/login', async (req, res) => {
 route.post('/login', async (req, res) => {
     let password = req.body.password;//freaking md5
     let login =  req.body.login;
+    console.log(require('util').inspect(req.body));
     console.log(require('util').inspect(req.params))
     if(!login) return res.send('Error: i need login');
     if(!password) return res.end('password please')

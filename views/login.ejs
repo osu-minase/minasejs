@@ -6,29 +6,22 @@
 <body>
 <% include ./base %>
 <script>
-$('.alert').alert('hello');
-function login(){
-    try {
-    let login = document.getElementsByClassName('loginfield').value;
-    let password = document.getElementsByClassName('passwordfield');
-    var res = jQuery.ajax({
-        type: 'POST',
-        url: '/login',
-        data: JSON.stringify({login: login, password: password}),
-        success: function(data){
-            alert(data)
-        }
+$('document').ready(function(){
+    $('.login-btn').click(function(event){
+        let login = document.getElementsByClassName('loginfield').value;
+        let password = document.getElementsByClassName('passwordfield').value;
+        console.log('Clicked!')
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('POST', '/login')
+        xhttp.send(JSON.stringify({login: login, password: password}))
+        
     })
-    } catch (error) {
-        alert('Oh, no we got some error, we shoult fix it! report it to SmallBabyTape#9393 \n' + error)
-    }
+})
 
-    
-}
 </script>
 <input type="text" placeholder="login" class="loginfield">
 <input type="password" placeholder="password" class="passwordfield">
-<button onclick="login()">login</button>
+<button class="home-btn btn-key login-btn">login</button>
 
 </button>
 </body> 

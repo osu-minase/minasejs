@@ -17,3 +17,29 @@
 }
 
 
+.home-btn {
+    background-image: url(https://akatsuki.pw/static/images/icons/button.svg);
+    border: none;
+    background-size: 150%;
+    border-radius: 4px;
+    color: #fff;
+    text-shadow: -1px 2px 2px rgba(0,0,0,.11);
+    transition: 200ms box-shadow,200ms background-position,200ms margin-top,200ms background-color;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: italic;
+    padding: 12px;
+    padding-left: 22px;
+    padding-right: 22px;
+    text-align: center;
+}
+
+.btn-key {
+    background-color: #f6a;
+    box-shadow: 0 4px #86385b, 0 2px 2px #000;
+}
+
+.btn-how {
+    background-color: #2094ca;
+    box-shadow: 0 4px #2f537d, 0 2px 2px #000;
+}
