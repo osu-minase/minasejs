@@ -6,14 +6,27 @@
 <body>
 <% include ./base %>
 <script>
-$('document').ready(function(){
+$('document').ready(function(){ //что не так?
     $('.login-btn').click(function(event){
         let login = document.getElementsByClassName('loginfield').value;
         let password = document.getElementsByClassName('passwordfield').value;
-        console.log('Clicked!')
-        var xhttp = new XMLHttpRequest();
-        xhttp.open('POST', '/login')
-        xhttp.send(JSON.stringify({login: login, password: password}))
+        console.log('Clicked!') //сайт обновляется сразу? (если я тут его обновлю)
+        let data = {
+            password: password,
+            login: login
+        }
+        /*
+        Uncaught TypeError: $.post is not a function
+    at HTMLButtonElement.<anonymous> (login:61)
+    at HTMLButtonElement.dispatch (jquery-3.3.1.slim.min.js:2)
+    at HTMLButtonElement.v.handle (jquery-3.3.1.slim.min.js:2)лагает
+        */
+        $.post('/login', {
+            data: data,
+            success: function() {
+                console.log('Data is now checked!')
+            }//я не вижу, крч го я клон сделаю, и подниму на aspire-world для лайв проверки
+        });
         
     })
 })
