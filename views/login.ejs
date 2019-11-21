@@ -5,36 +5,13 @@
 </head>
 <body>
 <% include ./base %>
-<script>
-$('document').ready(function(){ //что не так?
-    $('.login-btn').click(function(event){
-        let login = document.getElementsByClassName('loginfield').value;
-        let password = document.getElementsByClassName('passwordfield').value;
-        console.log('Clicked!') //сайт обновляется сразу? (если я тут его обновлю)
-        let data = {
-            password: password,
-            login: login
-        }
-        /*
-        Uncaught TypeError: $.post is not a function
-    at HTMLButtonElement.<anonymous> (login:61)
-    at HTMLButtonElement.dispatch (jquery-3.3.1.slim.min.js:2)
-    at HTMLButtonElement.v.handle (jquery-3.3.1.slim.min.js:2)лагает
-        */
-        $.post('/login', {
-            data: data,
-            success: function() {
-                console.log('Data is now checked!')
-            }//я не вижу, крч го я клон сделаю, и подниму на aspire-world для лайв проверки
-        });
-        
-    })
-})
+<form action="login", method="POST">
+        <input type="text" placeholder="login or email" class="login" name="login" required>
+        <input type="password" placeholder="password" class="passwordfield" name="password" required>
+        <button class="home-btn btn-key login-btn" type="submit">login</button>
+</form>
 
-</script>
-<input type="text" placeholder="login" class="loginfield">
-<input type="password" placeholder="password" class="passwordfield">
-<button class="home-btn btn-key login-btn">login</button>
+
 
 </button>
 </body> 

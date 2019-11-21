@@ -1,5 +1,6 @@
 const config = require('./config.json'); //CONFIG
 const express = require('express');
+const session = require('express-session');
 const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser');
 const homepage_route = require('./routes/homepage');
@@ -15,8 +16,7 @@ global.redis = redis_con;
 (async () => {
     const database = await mysql.createPool(options);
     global.db = database;
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}))
+
     app.set('view engine', 'ejs');// что нужн?мммм
     app.use('/static', express.static('static')); // так ты же сразу обновляешь, не?, зачем пулы на гит
     const mailer_transporter = mailer.createTransport({
@@ -30,7 +30,13 @@ global.redis = redis_con;
     })
     global.mailer = mailer_transporter;
 
-    
+    app.use(session({
+        secret: config.webserver.jwt_secret,
+        resave: true,
+        saveUninitialized:true
+    }));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: true}));
     app.use('/', homepage_route);
     app.use(require('./routes/mailtest'));
     app.use(require('./routes/api/auth'))

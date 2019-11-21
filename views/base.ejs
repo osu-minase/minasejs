@@ -6,7 +6,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="static/minase.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id=navbar>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img src="https://minase.tk/static/logos/text-black.png">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,17 +18,26 @@
           <a class="nav-link" href="#" style="color: #FFFFFF">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #FFFFFF">Features</a>
+          <a class="nav-link" href="#" style="color: #FFFFFF">Leaderboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #FFFFFF">Pricing</a>
+          <a class="nav-link" href="#" style="color: #FFFFFF">Beatmaps</a>
         </li>
+        <% if(req.session.userid) {%>
         <li class="nav-item">
-            <a class="nav-link" href="/login" style="color: #FFFFFF; float: right;">Login</a>
+            <a class="nav-link" href="/u/<%= req.session.userid %>" style="color: #FFFFFF; float: right;"><img src="https://a.minase.tk/<%= req.session.userid %>" height="32" width="32"></a>
         </li>
         <li class="nav-item align-items-right">
             <a class="nav-link" href="/register" style="color: #FFFFFF; float: right;">Register</a>
         </li>
+        <% } else { %>
+          <li class="nav-item align-items-right">
+              <a class="nav-link" href="/login" style="color: #FFFFFF; float: right;">Login</a>
+          </li>
+          <li class="nav-item align-items-right">
+              <a class="nav-link" href="/register" style="color: #FFFFFF; float: right;">Register</a>
+          </li>
+          <% } %>
       <form class="form-inline" style="float: right">
     <input class="form-control mr-sm-2" type="search" placeholder="Find someone?" aria-label="Search">
   </form>
