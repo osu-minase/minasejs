@@ -11,7 +11,8 @@
         "database": 0
     },
     "webserver": {
-        "port": 8080
+        "port": 8080,
+        "jwt_secret": "potato"
     },
     "mail": {
         "host": "smtp.gmail.com",
