@@ -43,3 +43,7 @@
     background-color: #2094ca;
     box-shadow: 0 4px #2f537d, 0 2px 2px #000;
 }
+
+.nav-item.nav-link {
+    color: #fff;
+}

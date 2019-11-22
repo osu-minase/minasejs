@@ -39,7 +39,8 @@ global.redis = redis_con;
     app.use(bodyParser.urlencoded({extended: true}));
     app.use('/', homepage_route);
     app.use(require('./routes/mailtest'));
-    app.use(require('./routes/api/auth'))
+    app.use(require('./routes/api/auth'));
+    app.use(require('./routes/user'));
 
 
 

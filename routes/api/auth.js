@@ -35,6 +35,7 @@ route.post('/login', async (req, res) => {
     let reponse_data = jwt.sign({userid: id, password: password_enc}, config.webserver.jwt_secret);
     req.session.token = reponse_data;
     req.session.userid = id;
+    req.session.login = login;
     res.redirect('/');
 })
 

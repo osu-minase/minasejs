@@ -13,8 +13,9 @@ module.exports = {
      *     raw: utils.inspect(userdata)
      */
     function: async function(id){
-    const res = await db.query(`SELECT * from users_stats where id=${id}`);
-    return res[0];
+        fixed_id = id.toString();
+        const [res] = await db.query(`SELECT * from users_stats where id=${fixed_id}`);
+        return res[0].id && res[0] || null;
 }
 
 }
