@@ -101,12 +101,15 @@ route.post('/register', async (req, res) => {
             0,
             "",
             2,
-            3,
+            ${require('../../functions/perms').UserPendingVerification},
             0,
             0,
             0
 
         )`)
+
+        //ADD users_stats, bancho dont want it!
+        db.query(`INSERT INTO \`users_stats\`(username, user_color, user_style, ranked_score_std, playcount_std, total_score_std, ranked_score_taiko, playcount_taiko, total_score_taiko, ranked_score_ctb, playcount_ctb, total_score_ctb, ranked_score_mania, playcount_mania, total_score_mania) VALUES (${username}, 'black', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);`)
         res.send('Done!')
 
 
